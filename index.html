@@ -196,112 +196,86 @@
 
     <script>
         // 1. Inicializa Ícones
-        lucide.createIcons();
+        // 1. Inicializa Ícones Lucide
+lucide.createIcons();
 
-        // 2. Animações GSAP Complexas
-        gsap.registerPlugin(ScrollTrigger);
-        
-        gsap.from(".gsap-hero", { y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power4.out", delay: 0.2 });
-        
-        gsap.from(".gsap-fade", {
-            scrollTrigger: { trigger: ".gsap-fade", start: "top 80%" },
-            y: 40, opacity: 0, duration: 1, ease: "power3.out"
-        });
+// 2. Configurações de Animação (GSAP)
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(".gsap-hero", { y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power4.out", delay: 0.2 });
+gsap.from(".gsap-fade", {
+    scrollTrigger: { trigger: ".gsap-fade", start: "top 80%" },
+    y: 40, opacity: 0, duration: 1, ease: "power3.out"
+});
+gsap.from(".gsap-card", {
+    scrollTrigger: { trigger: ".gsap-card", start: "top 85%" },
+    y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
+});
 
-        gsap.from(".gsap-card", {
-            scrollTrigger: { trigger: ".gsap-card", start: "top 85%" },
-            y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
-        });
+// 3. Sistema Multi-Idiomas (i18n)
+const i18n = {
+    pt: {
+        navDownload: "Baixar", heroBadge: "Lançamento 2026 Alpha", heroTitle: "PERFORMANCE <br><span class='text-blue-600 italic'>ABSOLUTA.</span>",
+        heroSub: "Zero anúncios. Otimização extrema de RAM. Uma experiência limpa construída para jogadores exigentes.",
+        btnFree: "Download Grátis", trustSafe: "Seguro", featTitle: "Engenharia de Elite",
+        feat1Title: "Ultra Rápido", feat1Desc: "Arquitetura leve que inicia o jogo em instantes, consumindo menos memória do seu computador.",
+        feat2Title: "Transparência", feat2Desc: "Código aberto no GitHub. Nenhuma telemetria, nenhum rastreador. Apenas você e seu mundo.",
+        feat3Title: "Design Limpo", feat3Desc: "Interface moderna e intuitiva, livre da poluição visual dos launchers comerciais padrão.",
+        donateTitle: "Apoie o Projeto", donateDesc: "Se o MineLauncher ajudou no seu FPS, considere pagar um café para o desenvolvedor manter os servidores online.",
+        pixCopyLabel: "Chave Pix (Copiar)", pixCopied: "Chave copiada com sucesso!"
+    },
+    en: {
+        navDownload: "Download", heroBadge: "2026 Alpha Release", heroTitle: "ABSOLUTE <br><span class='text-blue-600 italic'>PERFORMANCE.</span>",
+        heroSub: "Zero ads. Extreme RAM optimization. A clean experience built for demanding gamers.",
+        btnFree: "Free Download", trustSafe: "Safe", featTitle: "Elite Engineering",
+        feat1Title: "Lightning Fast", feat1Desc: "Lightweight architecture that launches the game instantly, consuming less system memory.",
+        feat2Title: "Transparency", feat2Desc: "Open source on GitHub. No telemetry, no trackers. Just you and your world.",
+        feat3Title: "Clean Design", feat3Desc: "Modern and intuitive interface, free from the visual clutter of standard commercial launchers.",
+        donateTitle: "Support the Project", donateDesc: "If MineLauncher boosted your FPS, consider buying the developer a coffee to keep servers running.",
+        pixCopyLabel: "Pix Key (Copy)", pixCopied: "Key copied successfully!"
+    },
+    es: {
+        navDownload: "Descargar", heroBadge: "Lanzamiento 2026 Alpha", heroTitle: "RENDIMIENTO <br><span class='text-blue-600 italic'>ABSOLUTO.</span>",
+        heroSub: "Cero anuncios. Optimización extrema de RAM. Una experiencia limpia creada para jugadores exigentes.",
+        btnFree: "Descarga Gratis", trustSafe: "Seguro", featTitle: "Ingeniería de Élite",
+        feat1Title: "Ultra Rápido", feat1Desc: "Arquitectura ligera que inicia el juego al instante, consumiendo menos memoria de tu ordenador.",
+        feat2Title: "Transparencia", feat2Desc: "Código abierto en GitHub. Sin telemetría, sin rastreadores. Solo tú y tu mundo.",
+        feat3Title: "Diseño Limpio", feat3Desc: "Interfaz moderna e intuitiva, libre de la contaminación visual de los lanzadores comerciales estándar.",
+        donateTitle: "Apoya el Projeto", donateDesc: "Si MineLauncher mejoró tus FPS, considera invitar un café al desarrollador para mantener los servidores.",
+        pixCopyLabel: "Clave Pix (Copiar)", pixCopied: "¡Clave copiada con éxito!"
+    }
+};
 
-        // 3. Sistema Multi-Idiomas (i18n)
-        const i18n = {
-            pt: {
-                navDownload: "Baixar", heroBadge: "Lançamento 2026 Alpha", heroTitle: "PERFORMANCE <br><span class='text-blue-600 italic'>ABSOLUTA.</span>",
-                heroSub: "Zero anúncios. Otimização extrema de RAM. Uma experiência limpa construída para jogadores exigentes.",
-                btnFree: "Download Grátis", trustSafe: "Seguro", featTitle: "Engenharia de Elite",
-                feat1Title: "Ultra Rápido", feat1Desc: "Arquitetura leve que inicia o jogo em instantes, consumindo menos memória do seu computador.",
-                feat2Title: "Transparência", feat2Desc: "Código aberto no GitHub. Nenhuma telemetria, nenhum rastreador. Apenas você e seu mundo.",
-                feat3Title: "Design Limpo", feat3Desc: "Interface moderna e intuitiva, livre da poluição visual dos launchers comerciais padrão.",
-                donateTitle: "Apoie o Projeto", donateDesc: "Se o MineLauncher ajudou no seu FPS, considere pagar um café para o desenvolvedor manter os servidores online.",
-                pixCopyLabel: "Chave Pix (Copiar)", pixCopied: "Chave copiada com sucesso!"
-            },
-            en: {
-                navDownload: "Download", heroBadge: "2026 Alpha Release", heroTitle: "ABSOLUTE <br><span class='text-blue-600 italic'>PERFORMANCE.</span>",
-                heroSub: "Zero ads. Extreme RAM optimization. A clean experience built for demanding gamers.",
-                btnFree: "Free Download", trustSafe: "Safe", featTitle: "Elite Engineering",
-                feat1Title: "Lightning Fast", feat1Desc: "Lightweight architecture that launches the game instantly, consuming less system memory.",
-                feat2Title: "Transparency", feat2Desc: "Open source on GitHub. No telemetry, no trackers. Just you and your world.",
-                feat3Title: "Clean Design", feat3Desc: "Modern and intuitive interface, free from the visual clutter of standard commercial launchers.",
-                donateTitle: "Support the Project", donateDesc: "If MineLauncher boosted your FPS, consider buying the developer a coffee to keep servers running.",
-                pixCopyLabel: "Pix Key (Copy)", pixCopied: "Key copied successfully!"
-            },
-            es: {
-                navDownload: "Descargar", heroBadge: "Lanzamiento 2026 Alpha", heroTitle: "RENDIMIENTO <br><span class='text-blue-600 italic'>ABSOLUTO.</span>",
-                heroSub: "Cero anuncios. Optimización extrema de RAM. Una experiencia limpia creada para jugadores exigentes.",
-                btnFree: "Descarga Gratis", trustSafe: "Seguro", featTitle: "Ingeniería de Élite",
-                feat1Title: "Ultra Rápido", feat1Desc: "Arquitectura ligera que inicia el juego al instante, consumiendo menos memoria de tu ordenador.",
-                feat2Title: "Transparencia", feat2Desc: "Código abierto en GitHub. Sin telemetría, sin rastreadores. Solo tú y tu mundo.",
-                feat3Title: "Diseño Limpio", feat3Desc: "Interfaz moderna e intuitiva, libre de la contaminación visual de los lanzadores comerciales estándar.",
-                donateTitle: "Apoya el Proyecto", donateDesc: "Si MineLauncher mejoró tus FPS, considera invitar un café al desarrollador para mantener los servidores.",
-                pixCopyLabel: "Clave Pix (Copiar)", pixCopied: "¡Clave copiada con éxito!"
-            }
-        };
-
-        function setLang(lang) {
-            // Atualiza Textos
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(i18n[lang][key]) el.innerHTML = i18n[lang][key];
-            });
-            // Atualiza Botões Visuais
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if(btn.innerText.toLowerCase() === lang) {
-                    btn.classList.replace('text-slate-400', 'text-white');
-                    btn.classList.add('bg-blue-600');
-                } else {
-                    btn.classList.replace('text-white', 'text-slate-400');
-                    btn.classList.remove('bg-blue-600');
-                }
-            });
+function setLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(i18n[lang][key]) el.innerHTML = i18n[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if(btn.innerText.toLowerCase() === lang) {
+            btn.classList.add('text-white', 'bg-blue-600');
+            btn.classList.remove('text-slate-400');
+        } else {
+            btn.classList.remove('text-white', 'bg-blue-600');
+            btn.classList.add('text-slate-400');
         }
+    });
+}
 
-        // 4. Lógica Matemática Matemática Perfeita do Payload Pix (Evita erro QRCD3)
-        function generateDynamicPix(key, name, city) {
-            const payload = [
-                "000201", "26", (22 + key.length).toString(), "0014BR.GOV.BCB.PIX",
-                "01" + key.length.toString().padStart(2, '0') + key,
-                "52040000", "5303986", "5802BR",
-                "59" + name.length.toString().padStart(2, '0') + name,
-                "60" + city.length.toString().padStart(2, '0') + city,
-                "62070503***", "6304"
-            ].join('');
+// 4. Configuração do Pix (Valor Aberto)
+// Utilizamos a string estática que passou nos testes de validação bancária
+const finalPixPayload = "00020101021126360014br.gov.bcb.pix0114+55669995194545204000053039865802BR5912ENZO T CEZAR6013PRIMAVERA DO 62070503***63048350";
 
-            // CRC16 Checksum
-            let crc = 0xFFFF;
-            for (let i = 0; i < payload.length; i++) {
-                crc ^= payload.charCodeAt(i) << 8;
-                for (let j = 0; j < 8; j++) {
-                    if ((crc & 0x8000) !== 0) crc = (crc << 1) ^ 0x1021;
-                    else crc <<= 1;
-                }
-            }
-            const crcStr = (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
-            return payload + crcStr;
-        }
+// Atualiza a interface com o código funcional
+document.getElementById("qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(finalPixPayload)}`;
+document.getElementById("pix-string").innerText = finalPixPayload;
 
-        // Configuração do Dev
-        const finalPixPayload = generateDynamicPix("05587858162", "Enzo Trentin Cezar", "Primavera do Leste");
-        
-        // Aplica na UI
-        document.getElementById("qr-img").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(finalPixPayload)}`;
-        document.getElementById("pix-string").innerText = finalPixPayload;
-
-        function copyPix() {
-            navigator.clipboard.writeText(finalPixPayload);
-            const feedback = document.getElementById("copy-feedback");
-            feedback.style.opacity = "1";
-            setTimeout(() => { feedback.style.opacity = "0"; }, 2500);
-        }
+function copyPix() {
+    navigator.clipboard.writeText(finalPixPayload).then(() => {
+        const feedback = document.getElementById("copy-feedback");
+        feedback.style.opacity = "1";
+        setTimeout(() => { feedback.style.opacity = "0"; }, 2500);
+    });
+}
     </script>
 </body>
 </html>
